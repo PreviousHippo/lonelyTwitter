@@ -2,6 +2,7 @@ package ca.ualberta.cs.lonelytwitter;
 
 import java.io.IOException;
 import java.util.Date;
+import java.util.Random;
 
 /**
  * Created by joshua2 on 9/16/15.

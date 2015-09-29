@@ -18,4 +18,23 @@ public class LonelyTwitterActivityTest extends ActivityInstrumentationTestCase2 
         Activity activity = getActivity();
 
     }
+    public void addTweets(){
+
+    }
+
+    public void getTweets(){
+
+    }
+
+    public void hasTweets(){
+
+    }
+
+    public void RemoveTweets(){
+
+    }
+
+    public void getCount(){
+
+    }
 }
