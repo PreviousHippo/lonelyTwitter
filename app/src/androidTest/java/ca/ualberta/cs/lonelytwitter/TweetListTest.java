@@ -2,12 +2,10 @@ package ca.ualberta.cs.lonelytwitter;
 
 import android.test.ActivityInstrumentationTestCase2;
 
-import junit.framework.TestCase;
-
 /**
  * Created by thu2 on 9/29/15.
  */
-public class TweetListTest extends ActivityInstrumentationTestCase2 {
+public class TweetListTest extends ActivityInstrumentationTestCase2 implements MyObserver {
     public  TweetListTest(){
         super(ca.ualberta.cs.lonelytwitter.LonelyTwitterActivity.class);
     }
@@ -33,10 +31,35 @@ public class TweetListTest extends ActivityInstrumentationTestCase2 {
         list.add(tweet);
         assertEquals(list.count(), 1);
         list.add(new NormalTweet("test"));
-        assertEquals(list.count(),2);
+        assertEquals(list.count(), 2);
 
     }
-    public void testAddTweets(){
+    public void myNotify(MyObservable observable){
+        weWereNotified = Boolean.TRUE;
+    }
+
+    private Boolean weWereNotified;
+
+    public void testObservable(){
+        TweetList list = new TweetList();
+        list.addObserver(this);
+        Tweet tweet = new NormalTweet("test");
+        weWereNotified = Boolean.FALSE;
+        list.add(tweet);
+        assertTrue(weWereNotified);
+    }
+
+    public void testModifyTweetInList(){
+        TweetList list = new TweetList();
+        list.addObserver(this);
+        Tweet tweet = new NormalTweet("test");
+        list.add(tweet);
+        weWereNotified = Boolean.FALSE;
+        tweet.setText("Different TEXT");
+        assertTrue(weWereNotified);
+    }
+
+    /*public void testAddTweets(){
         TweetList list = new TweetList();
         Tweet tweet = new NormalTweet("test");
         list.add(tweet);
@@ -65,5 +88,5 @@ public class TweetListTest extends ActivityInstrumentationTestCase2 {
     public void testCountUpTweet(){
         TweetList list = new TweetList();
         list.count();
-    }
+    }*/
 }

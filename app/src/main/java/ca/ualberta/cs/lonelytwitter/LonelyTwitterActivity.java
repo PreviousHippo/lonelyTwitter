@@ -41,21 +41,21 @@ public class LonelyTwitterActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
+        setContentView(R.layout.main);//view
 
-        bodyText = (EditText) findViewById(R.id.body);
-        Button saveButton = (Button) findViewById(R.id.save);
-        Button clearButton = (Button) findViewById(R.id.clear);
+        bodyText = (EditText) findViewById(R.id.body);//view
+        Button saveButton = (Button) findViewById(R.id.save);//view
+        Button clearButton = (Button) findViewById(R.id.clear);//view
         oldTweetsList = (ListView) findViewById(R.id.oldTweetsList);
 
         saveButton.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
                 setResult(RESULT_OK);
-                String text = bodyText.getText().toString();
-                tweets.add(new NormalTweet(text));
-                adapter.notifyDataSetChanged();
-                saveInFile();
+                String text = bodyText.getText().toString();//controller
+                tweets.add(new NormalTweet(text));//controller
+                adapter.notifyDataSetChanged();//view
+                saveInFile();//model
                 //saveInFile(text, new Date(System.currentTimeMillis()));
                 //finish();
             }
@@ -64,9 +64,9 @@ public class LonelyTwitterActivity extends Activity {
 
             public void onClick(View v) {
                 setResult(RESULT_OK);
-                tweets.clear();
-                adapter.notifyDataSetChanged();
-                clearInFile();
+                tweets.clear();//view
+                adapter.notifyDataSetChanged();//view
+                clearInFile();//model
             }
 
 
@@ -77,22 +77,22 @@ public class LonelyTwitterActivity extends Activity {
     protected void onStart() {
         // TODO Auto-generated method stub
         super.onStart();
-        loadFromFile();
+        loadFromFile();//model
         //ArrayList<Tweet> tweets = new ArrayList<Tweet>();
-        adapter = new ArrayAdapter<Tweet>(this, R.layout.list_item, tweets);
-        oldTweetsList.setAdapter(adapter);
+        adapter = new ArrayAdapter<Tweet>(this, R.layout.list_item, tweets);//view
+        oldTweetsList.setAdapter(adapter);//view
     }
 
     private void loadFromFile() {
         //ArrayList<String> tweets = new ArrayList<String>();
         try {
-            FileInputStream fis = openFileInput(FILENAME);
-            BufferedReader in = new BufferedReader(new InputStreamReader(fis));
-            Gson gson = new Gson();
+            FileInputStream fis = openFileInput(FILENAME);//model
+            BufferedReader in = new BufferedReader(new InputStreamReader(fis));//model
+            Gson gson = new Gson();//controller
             //taken from https://google-gson.googlecode.com/svn/trunk/gson/docs/javadocs/com/google/gson/Gson.html
             Type listType = new TypeToken<ArrayList<NormalTweet>>() {
-            }.getType();
-           tweets = gson.fromJson(in, listType);
+            }.getType();//controller
+           tweets = gson.fromJson(in, listType);//model
 
 
             //String line = in.readLine();
@@ -103,15 +103,15 @@ public class LonelyTwitterActivity extends Activity {
 
         } catch (FileNotFoundException e) {
             // TODO Auto-generated catch block
-            tweets = new ArrayList<Tweet>();
+            tweets = new ArrayList<Tweet>();//model
         } catch (IOException e) {
             // TODO Auto-generated catch block
-            throw new RuntimeException(e);
+            throw new RuntimeException(e);//model
         }
         //return tweets.toArray(new String[tweets.size()]);
     }
 
-    private void saveInFile() {
+    private void saveInFile() {//model
         try {
             FileOutputStream fos = openFileOutput(FILENAME,
                     0);
@@ -129,7 +129,7 @@ public class LonelyTwitterActivity extends Activity {
         }
     }
 
-    private void clearInFile() {
+    private void clearInFile() {//model
         try {
             FileOutputStream fos = openFileOutput(FILENAME, 0);
             OutputStreamWriter writer = new OutputStreamWriter(fos);

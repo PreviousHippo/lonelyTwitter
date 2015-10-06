@@ -14,27 +14,4 @@ public class LonelyTwitterActivityTest extends ActivityInstrumentationTestCase2 
         super(ca.ualberta.cs.lonelytwitter.LonelyTwitterActivity.class);
     }
 
-    public void testStart() throws Exception {
-        Activity activity = getActivity();
-
-    }
-    public void addTweets(){
-
-    }
-
-    public void getTweets(){
-
-    }
-
-    public void hasTweets(){
-
-    }
-
-    public void RemoveTweets(){
-
-    }
-
-    public void getCount(){
-
-    }
 }

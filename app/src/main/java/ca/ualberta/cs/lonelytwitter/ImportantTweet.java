@@ -25,4 +25,9 @@ public class ImportantTweet extends Tweet {
         return "!!!" + super.getText();
     }
 
+    /**
+     * Created by thu2 on 10/6/15.
+     */
+    public static class MyObserver {
+    }
 }
