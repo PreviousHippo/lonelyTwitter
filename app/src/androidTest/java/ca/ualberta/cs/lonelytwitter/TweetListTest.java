@@ -5,7 +5,7 @@ import android.test.ActivityInstrumentationTestCase2;
 /**
  * Created by thu2 on 9/29/15.
  */
-public class TweetListTest extends ActivityInstrumentationTestCase2 implements MyObserver {
+public class TweetListTest extends ActivityInstrumentationTestCase2 {
     public  TweetListTest(){
         super(ca.ualberta.cs.lonelytwitter.LonelyTwitterActivity.class);
     }
@@ -40,7 +40,7 @@ public class TweetListTest extends ActivityInstrumentationTestCase2 implements M
 
     private Boolean weWereNotified;
 
-    public void testObservable(){
+   /* public void testObservable(){
         TweetList list = new TweetList();
         list.addObserver(this);
         Tweet tweet = new NormalTweet("test");
@@ -49,7 +49,7 @@ public class TweetListTest extends ActivityInstrumentationTestCase2 implements M
         assertTrue(weWereNotified);
     }
 
-    public void testModifyTweetInList(){
+    /*public void testModifyTweetInList(){
         TweetList list = new TweetList();
         list.addObserver(this);
         Tweet tweet = new NormalTweet("test");
@@ -57,7 +57,7 @@ public class TweetListTest extends ActivityInstrumentationTestCase2 implements M
         weWereNotified = Boolean.FALSE;
         tweet.setText("Different TEXT");
         assertTrue(weWereNotified);
-    }
+    }*/
 
     /*public void testAddTweets(){
         TweetList list = new TweetList();
